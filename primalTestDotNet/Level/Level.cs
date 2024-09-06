@@ -1,4 +1,5 @@
-﻿using PrimalTestDotNet.Entities;
+﻿using PrimalTestDotNet.AI;
+using PrimalTestDotNet.Entities;
 
 namespace PrimalTestDotNet.Level;
 
@@ -8,8 +9,9 @@ public class Level : IGameObjectContainer, ILeaveHandler, ICollider, IDeathHandl
     public bool[,] CollisionData { get; private set; }
     private readonly Hero _hero;
     private readonly EntityRenderer _entityRenderer = new();
-    private readonly AI _ai;
+    private readonly AIStateMachine _ai;
 
+    // TODO: state machine
     public GameState GameState { get; private set; } = GameState.RUNNING;
     public AIState AIState { get; private set; } = AIState.INACTIVE;
 
@@ -63,7 +65,7 @@ public class Level : IGameObjectContainer, ILeaveHandler, ICollider, IDeathHandl
                 }
             }
 
-            _ai = new AI(this, _hero!, _gameObjects);
+            _ai = new AIStateMachine(this, _hero!, _gameObjects);
         }
         else
             throw new Exception("Invalid level data");
