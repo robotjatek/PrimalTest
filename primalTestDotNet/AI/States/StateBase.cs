@@ -8,10 +8,20 @@ public class DistanceData
     public IntVector2? PreviousVertex { get; set; }
 }
 
+/// <summary>
+/// Base class for AI states. Contains a crude implementation of Dijkstra's algorithm for path calculations
+/// </summary>
 public abstract class StateBase(Level.Level level)
 {
     protected Level.Level _level = level;
 
+    /// <summary>
+    /// Returns a list of coordinates of the shortest path possible between two given coordinates.
+    /// </summary>
+    /// <param name="from">The start coordinate</param>
+    /// <param name="to">The final destination</param>
+    /// <param name="distanceData">A map of values calculated by <see cref="CalculateDistanceData(IntVector2, IEnumerable{IGameObject})"/></param>
+    /// <returns></returns>
     protected List<IntVector2> GetPath(IntVector2 from, IntVector2 to, Dictionary<IntVector2, DistanceData> distanceData)
     {
         var path = new List<IntVector2>
@@ -31,7 +41,13 @@ public abstract class StateBase(Level.Level level)
         return path;
     }
 
-    protected Dictionary<IntVector2, DistanceData> CalculateDistanceData(IntVector2 from, IEnumerable<IGameObject> additionalWalls)
+    /// <summary>
+    /// Calculates shortest paths from all nodes to the start node for the <see cref="Level.Level"/> data with Dijkstra's algorithm
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="additionalWalls">Additional walls other than the one provided by <see cref="Level.Level"/></param>
+    /// <returns></returns>
+    protected Dictionary<IntVector2, DistanceData> CalculateDistanceData(IntVector2 start, IEnumerable<IGameObject> additionalWalls)
     {
         var distanceData = new Dictionary<IntVector2, DistanceData>();
 
@@ -51,7 +67,7 @@ public abstract class StateBase(Level.Level level)
             distanceData[x] = new DistanceData
             {
                 PreviousVertex = null,
-                ShortestDistance = x == from ? 0 : int.MaxValue
+                ShortestDistance = x == start ? 0 : int.MaxValue
             };
         });
 

@@ -19,7 +19,6 @@ internal class Program
 
     private static void WriteEnd(Level.Level level)
     {
-        // TODO: state machine
         Console.SetCursorPosition(0, level.Y);
         if (level.GameState == Level.GameState.DEAD)
         {
