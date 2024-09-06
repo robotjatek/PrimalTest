@@ -11,7 +11,6 @@ public class Level : IGameObjectContainer, ILeaveHandler, ICollider, IDeathHandl
     private readonly EntityRenderer _entityRenderer = new();
     private readonly AIStateMachine _ai;
 
-    // TODO: state machine
     public GameState GameState { get; private set; } = GameState.RUNNING;
     public AIState AIState { get; private set; } = AIState.INACTIVE;
 

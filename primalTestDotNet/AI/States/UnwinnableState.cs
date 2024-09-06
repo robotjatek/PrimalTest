@@ -10,7 +10,7 @@ public class UnwinnableState(Level.Level level) : StateBase(level), IState
         // forfeit when unwinnable
         // try to exit
         var exit = gameObjects.FirstOrDefault(o => o is Exit);
-        var pathToExit = GetPath(hero.Position, exit.Position, distanceData);
+        var pathToExit = GetPath(hero.Position, exit!.Position, distanceData);
         var node = pathToExit.Last();
         var direction = node - hero.Position;
 
