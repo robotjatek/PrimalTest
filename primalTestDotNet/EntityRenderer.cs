@@ -1,6 +1,6 @@
 ﻿namespace PrimalTestDotNet;
 
-class EntityRenderer
+public class EntityRenderer
 {
     public void Draw(IDrawable drawable)
     {

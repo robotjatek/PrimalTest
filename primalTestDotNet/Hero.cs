@@ -3,7 +3,7 @@ using PrimalTestDotNet.Level;
 
 namespace PrimalTestDotNet;
 
-class Hero(ICollider collider, int x, int y, IEnumerable<IGameObject> gameObjects, IDeathHandler deathHandler) : IDrawable
+public class Hero(ICollider collider, int x, int y, IEnumerable<IGameObject> gameObjects, IDeathHandler deathHandler) : IDrawable
 {
     public IntVector2 Position { get; set; } = new IntVector2(x, y);
     private IntVector2 LastPosition { get; set; } = new IntVector2(x, y);

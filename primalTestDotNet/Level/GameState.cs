@@ -1,14 +1,15 @@
 ﻿namespace PrimalTestDotNet.Level;
 
-enum GameState
+public enum GameState
 {
     RUNNING,
     FORFEIT,
     WIN,
     DEAD,
+    STUCK
 }
 
-enum AIState
+public enum AIState
 {
     ACTIVE,
     INACTIVE

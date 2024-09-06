@@ -32,5 +32,9 @@ internal class Program
         {
             Console.WriteLine("Forfeit...");
         }
+        else if (level.GameState == Level.GameState.STUCK)
+        {
+            Console.WriteLine("Stuck. Game over.");
+        }
     }
 }

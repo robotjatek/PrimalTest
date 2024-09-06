@@ -2,7 +2,7 @@
 
 namespace PrimalTestDotNet.Level;
 
-interface ICollider
+public interface ICollider
 {
     bool IsCollidingWith(IGameObject gameObject);
     bool IsCollidingWith(Hero hero);

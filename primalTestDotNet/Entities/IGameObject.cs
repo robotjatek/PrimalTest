@@ -1,6 +1,6 @@
 ﻿namespace PrimalTestDotNet.Entities;
 
-interface IGameObject : IDrawable
+public interface IGameObject : IDrawable
 {
     void Visit(Hero hero);
 }

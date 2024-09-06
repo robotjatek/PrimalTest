@@ -2,7 +2,7 @@
 
 namespace PrimalTestDotNet.Level;
 
-class Level : IGameObjectContainer, ILeaveHandler, ICollider, IDeathHandler
+public class Level : IGameObjectContainer, ILeaveHandler, ICollider, IDeathHandler
 {
     private readonly List<IGameObject> _gameObjects = [];
     public bool[,] CollisionData { get; private set; }
@@ -116,7 +116,7 @@ class Level : IGameObjectContainer, ILeaveHandler, ICollider, IDeathHandler
         if (AIState == AIState.ACTIVE)
         {
             _ai.Update();
-            Thread.Sleep(200);
+            Thread.Sleep(100);
         }
     }
 
@@ -181,5 +181,10 @@ class Level : IGameObjectContainer, ILeaveHandler, ICollider, IDeathHandler
     public void OnDeath()
     {
         GameState = GameState.DEAD;
+    }
+
+    public void OnStuck()
+    {
+        GameState = GameState.STUCK;
     }
 }

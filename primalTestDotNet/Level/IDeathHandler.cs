@@ -1,6 +1,6 @@
 ﻿namespace PrimalTestDotNet.Level;
 
-interface IDeathHandler
+public interface IDeathHandler
 {
     void OnDeath();
 }

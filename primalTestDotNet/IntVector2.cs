@@ -1,6 +1,6 @@
 ﻿namespace PrimalTestDotNet;
 
-internal struct IntVector2(int x, int y)
+public struct IntVector2(int x, int y)
 {
     public static readonly IntVector2 UnitX = new(1, 0);
     public static readonly IntVector2 UnitY = new(0, 1);

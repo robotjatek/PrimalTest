@@ -1,6 +1,6 @@
 ﻿namespace PrimalTestDotNet;
 
-interface IDrawable
+public interface IDrawable
 {
     IntVector2 Position { get; }
     char Sprite { get; }
