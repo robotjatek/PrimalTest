@@ -2,5 +2,5 @@
 
 public interface IGameObject : IDrawable
 {
-    void Visit(Hero hero);
+    void Interact(Hero hero);
 }

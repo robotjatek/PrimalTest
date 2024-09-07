@@ -13,7 +13,7 @@ class Exit(ILeaveHandler container, int x, int y) : IGameObject
         renderer.Draw(this);
     }
 
-    public void Visit(Hero hero)
+    public void Interact(Hero hero)
     {
         container.OnLeave(hero);
     }

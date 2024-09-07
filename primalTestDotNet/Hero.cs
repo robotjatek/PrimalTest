@@ -21,14 +21,22 @@ public class Hero(ICollider collider, int x, int y, IEnumerable<IGameObject> gam
         }
     }
 
-    // TODO: IGameObject BackPack?
-    public bool HasSword { get; set; } = false;
-    public bool HasTreasure { get; set; } = false;
     public char Sprite => 'h';
+
+    private readonly HashSet<IBackpackItem> _backpackItems = [];
+
+    public bool HasSword => _backpackItems.Any(i => i is Sword);
+
+    public bool HasTreasure => _backpackItems.Any(i => i is Treasure);
+
+    public void AddItemToBackpack(IBackpackItem item)
+    {
+        _backpackItems.Add(item);
+    }
 
     public void InteractWith(IGameObject interactable)
     {
-        interactable.Visit(this);
+        interactable.Interact(this);
     }
 
     public void Kill()
@@ -41,7 +49,7 @@ public class Hero(ICollider collider, int x, int y, IEnumerable<IGameObject> gam
         foreach (var item in gameObjects.ToList())
         {
             if (item.Position.X == Position.X && item.Position.Y == Position.Y)
-                item.Visit(this);
+                item.Interact(this);
         }
     }
 

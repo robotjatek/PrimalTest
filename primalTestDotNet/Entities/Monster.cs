@@ -13,7 +13,7 @@ class Monster(IGameObjectContainer container, int x, int y) : IGameObject
         renderer.Draw(this);
     }
 
-    public void Visit(Hero hero)
+    public void Interact(Hero hero)
     {
         if (hero.HasSword)
         {

@@ -11,7 +11,7 @@ class Trap(Level.Level level, int x, int y) : IGameObject
         renderer.Draw(this);
     }
 
-    public void Visit(Hero hero)
+    public void Interact(Hero hero)
     {
         level.RemoveGameObject(this);
         level.SetWall(Position.Y, Position.X);

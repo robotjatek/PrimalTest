@@ -2,15 +2,15 @@
 
 namespace PrimalTestDotNet.Entities;
 
-class Treasure(IGameObjectContainer container, int x, int y) : IGameObject
+class Treasure(IGameObjectContainer container, int x, int y) : IGameObject, IBackpackItem
 {
     public char Sprite => 'k';
 
     public IntVector2 Position => new(x, y);
 
-    public void Visit(Hero hero)
+    public void Interact(Hero hero)
     {
-        hero.HasTreasure = true;
+        hero.AddItemToBackpack(this);
         container.RemoveGameObject(this);
     }
 

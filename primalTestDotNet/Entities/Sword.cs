@@ -2,7 +2,7 @@
 
 namespace PrimalTestDotNet.Entities;
 
-class Sword(IGameObjectContainer container, int x, int y) : IGameObject
+class Sword(IGameObjectContainer container, int x, int y) : IGameObject, IBackpackItem
 {
     public char Sprite => 'a';
 
@@ -13,9 +13,9 @@ class Sword(IGameObjectContainer container, int x, int y) : IGameObject
         renderer.Draw(this);
     }
 
-    public void Visit(Hero hero)
+    public void Interact(Hero hero)
     {
-        hero.HasSword = true;
+        hero.AddItemToBackpack(this);
         container.RemoveGameObject(this);
     }
 }
