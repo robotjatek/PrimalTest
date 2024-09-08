@@ -5,8 +5,7 @@ public enum GameState
     RUNNING,
     FORFEIT,
     WIN,
-    DEAD,
-    STUCK
+    DEAD
 }
 
 public enum AIState

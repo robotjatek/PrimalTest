@@ -17,7 +17,7 @@ public class UnwinnableState(Level.Level level) : StateBase(level), IState
         if (direction.Length > 1)
         {
             // If leaving without the treasure also fails => game over 
-            _level.OnStuck();
+            _level.OnForfeit();
             return;
         }
 

@@ -20,21 +20,19 @@ internal class Program
     private static void WriteEnd(Level.Level level)
     {
         Console.SetCursorPosition(0, level.Y);
-        if (level.GameState == Level.GameState.DEAD)
+        switch (level.GameState)
         {
-            Console.WriteLine("Game over");
-        }
-        else if (level.GameState == Level.GameState.WIN)
-        {
-            Console.WriteLine("You win");
-        }
-        else if (level.GameState == Level.GameState.FORFEIT)
-        {
-            Console.WriteLine("Forfeit...");
-        }
-        else if (level.GameState == Level.GameState.STUCK)
-        {
-            Console.WriteLine("Stuck. Game over.");
+            case Level.GameState.DEAD:
+                Console.WriteLine("Game over");
+                break;
+            case Level.GameState.WIN:
+                Console.WriteLine("You win");
+                break;
+            case Level.GameState.FORFEIT:
+                Console.WriteLine("Forfeit...");
+                break;
+            default:
+                throw new InvalidOperationException("Invalid state at the end");
         }
     }
 }

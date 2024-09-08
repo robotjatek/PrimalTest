@@ -46,6 +46,7 @@ public class Hero(ICollider collider, int x, int y, IEnumerable<IGameObject> gam
 
     public void Update()
     {
+        // Iterating through a copy: this way the application wont crash on item removal
         foreach (var item in gameObjects.ToList())
         {
             if (item.Position.X == Position.X && item.Position.Y == Position.Y)

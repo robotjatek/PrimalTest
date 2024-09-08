@@ -141,7 +141,7 @@ public class Level : IGameObjectContainer, ILeaveHandler, ICollider, IDeathHandl
                     _hero.Move(IntVector2.UnitY);
                     break;
                 case ConsoleKey.Escape:
-                    GameState = GameState.FORFEIT;
+                    OnForfeit();
                     break;
                 case ConsoleKey.Enter:
                     AIState = AIState.ACTIVE;
@@ -184,8 +184,8 @@ public class Level : IGameObjectContainer, ILeaveHandler, ICollider, IDeathHandl
         GameState = GameState.DEAD;
     }
 
-    public void OnStuck()
+    public void OnForfeit()
     {
-        GameState = GameState.STUCK;
+        GameState = GameState.FORFEIT;
     }
 }
