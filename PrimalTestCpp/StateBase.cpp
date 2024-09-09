@@ -10,7 +10,7 @@ StateBase::StateBase(Level& level) : _level(level)
 {
 }
 
-std::unordered_map<IntVector2D, DistanceData> StateBase::calculateDistanceData(const IntVector2D& start, const std::list<std::shared_ptr<IGameObject>>& additionalWalls)
+std::unordered_map<IntVector2D, DistanceData> StateBase::calculateDistanceData(const IntVector2D& start, const std::vector<std::shared_ptr<IGameObject>>& additionalWalls)
 {
 	std::unordered_map<IntVector2D, DistanceData> distanceData;
 

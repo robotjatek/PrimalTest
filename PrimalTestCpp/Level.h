@@ -50,6 +50,7 @@ public:
 	bool isCollidingWith(const IntVector2D& point) const override;
 	void onDeath() override;
 	void onLeave(const Hero& hero) override;
+	void onForfeit();
 	GameState getGameState() const;
 	int getY() const;
 	int getX() const;

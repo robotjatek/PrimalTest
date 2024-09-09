@@ -72,6 +72,18 @@
     <ClCompile Include="LookingForTreasureState.cpp">
       <Filter>Source Files\AI\States</Filter>
     </ClCompile>
+    <ClCompile Include="LeavingLevelState.cpp">
+      <Filter>Source Files\AI\States</Filter>
+    </ClCompile>
+    <ClCompile Include="UnwinnableState.cpp">
+      <Filter>Source Files\AI\States</Filter>
+    </ClCompile>
+    <ClCompile Include="LookingForSwordState.cpp">
+      <Filter>Source Files\AI\States</Filter>
+    </ClCompile>
+    <ClCompile Include="LookingForPotionState.cpp">
+      <Filter>Source Files\AI\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="lvl.txt" />
@@ -138,6 +150,18 @@
       <Filter>Header Files\AI\States</Filter>
     </ClInclude>
     <ClInclude Include="DistanceData.h">
+      <Filter>Header Files\AI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="LeavingLevelState.h">
+      <Filter>Header Files\AI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="UnwinnableState.h">
+      <Filter>Header Files\AI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="LookingForSwordState.h">
+      <Filter>Header Files\AI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="LookingForPotionState.h">
       <Filter>Header Files\AI\States</Filter>
     </ClInclude>
   </ItemGroup>

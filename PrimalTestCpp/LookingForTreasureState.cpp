@@ -11,28 +11,20 @@
 LookingForTreasureState::LookingForTreasureState(AIStateMachine& context, Level& level)
 	: StateBase(level), _context(context) { }
 
-void LookingForTreasureState::update(Hero& hero, std::list<std::shared_ptr<IGameObject>>& gameObjects)
-{
+void LookingForTreasureState::update(Hero& hero, std::vector<std::shared_ptr<IGameObject>>& gameObjects) {
 	auto distanceData = calculateDistanceData(hero.getPosition(), {});
 	if (hero.hasTreasure()) {
-		//		_context.changeState()
-				// TODO: change to leave level
+		_context.changeState(_context.LEAVING_LEVEL_STATE());
 		return;
 	}
 
-	/*auto iterator = std::find_if(gameObjects.begin(), gameObjects.end(),
-		[](const std::shared_ptr<IGameObject>& obj) {
-			return std::dynamic_pointer_cast<Treasure>(obj) != nullptr;
-		});*/
-
 	auto treasures = StateBase::findAllObjectsOfType<Treasure>(gameObjects);
-	//if (treasures.size() == 0) {
-	//	//_context.changeState();
-	//	// TODO: change to unwinnable state
-	//	return;
-	//}
+	if (treasures.size() == 0) {
+		_context.changeState(_context.UNWINNABLE_STATE());
+		return;
+	}
 
-	// Now only one treasure is supported...
+	// Only one treasure is supported at the moment
 	auto pathToTreasure = getPath(hero.getPosition(), treasures[0]->getPosition(), distanceData);
 	auto monsters = findAllObjectsOfType<Monster>(gameObjects);
 	auto monstersOnPath = filterObjectTypesOnPath<Monster>(monsters, pathToTreasure);
@@ -40,29 +32,22 @@ void LookingForTreasureState::update(Hero& hero, std::list<std::shared_ptr<IGame
 	// Get a potion if the health is less than the maximum and there are monsters in the path
 	// Keeping the hero alive is the highest priority
 	if (monstersOnPath.size() > 0 && hero.getHealth() < 2) {
-		// TODO: LookingForPotionState
-		//_context.changeState()
+		_context.changeState(_context.LOOKING_FOR_POTION_STATE());
 		return;
 	}
 	//get a sword if the path is not clear
 	else if (monstersOnPath.size() > 0 && !hero.hasSword()) {
-		// TODO: lookingforswordstate
-		//_context.changeState()
+		_context.changeState(_context.LOOKING_FOR_SWORD_STATE());
 		return;
 	}
-	else if (hero.hasTreasure()) {
-		// TODO: change to Leave level state
-		//_context.changeState();
-		return;
-	}
-	// if no state change neccessary move towards to treasure on the calculated path
+	// if no state change necessary move towards to treasure on the calculated path
 	else {
 		auto& node = pathToTreasure.back();
 		auto direction = node - hero.getPosition();
 		// hero can only move 1 cell at a time. If the length is different from one this is not a valid path
 		if (direction.getLength() > 1) {
-			// TODO: unwinnable state
-			//_context.changeState();
+			// No path to treasure exists
+			_context.changeState(_context.UNWINNABLE_STATE());
 			return;
 		}
 		else {

@@ -25,6 +25,14 @@ public class LookingForPotionState(AIStateMachine context, Level.Level level) : 
 
         var node = pathToPotion.Last();
         var direction = node - hero.Position;
+        
+        // No clear path to potion
+        if(direction.Length > 1)
+        {
+            context.ChangeState(context.UnwinnableState);
+            return;
+        }
+
         hero.Move(direction);
     }
 }

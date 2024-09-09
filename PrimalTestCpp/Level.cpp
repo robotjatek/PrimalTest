@@ -63,7 +63,7 @@ Level::Level(const std::string& levelData) {
 			}
 		}
 
-		_ai = std::make_shared<AIStateMachine>(AIStateMachine(*this, *_hero, _gameObjects));
+		_ai = std::make_shared<AIStateMachine>(*this, *_hero, _gameObjects);
 		_collisionData.push_back(collisionRow);
 	}
 }
@@ -176,16 +176,18 @@ void Level::onLeave(const Hero& hero) {
 	}
 }
 
+void Level::onForfeit() {
+	_gameState = GameState::FORFEIT;
+}
+
 int Level::getY() const {
 	return _y;
 }
 
-int Level::getX() const
-{
+int Level::getX() const {
 	return _x;
 }
 
-std::vector<std::vector<bool>> Level::getCollisionData() const
-{
+std::vector<std::vector<bool>> Level::getCollisionData() const {
 	return _collisionData;
 }

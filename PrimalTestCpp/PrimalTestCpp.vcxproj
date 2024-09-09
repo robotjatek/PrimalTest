@@ -135,7 +135,10 @@
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="IDeathHandler.h" />
     <ClCompile Include="IntVector2D.cpp" />
+    <ClCompile Include="LeavingLevelState.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LookingForPotionState.cpp" />
+    <ClCompile Include="LookingForSwordState.cpp" />
     <ClCompile Include="LookingForTreasureState.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Monster.cpp" />
@@ -144,6 +147,7 @@
     <ClCompile Include="Sword.cpp" />
     <ClCompile Include="Trap.cpp" />
     <ClCompile Include="Treasure.cpp" />
+    <ClCompile Include="UnwinnableState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="lvl.txt" />
@@ -162,7 +166,10 @@
     <ClInclude Include="ILeaveHandler.h" />
     <ClInclude Include="IntVector2D.h" />
     <ClInclude Include="IState.h" />
+    <ClInclude Include="LeavingLevelState.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="LookingForPotionState.h" />
+    <ClInclude Include="LookingForSwordState.h" />
     <ClInclude Include="LookingForTreasureState.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Potion.h" />
@@ -170,6 +177,7 @@
     <ClInclude Include="Sword.h" />
     <ClInclude Include="Trap.h" />
     <ClInclude Include="Treasure.h" />
+    <ClInclude Include="UnwinnableState.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
