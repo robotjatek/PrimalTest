@@ -1,4 +1,5 @@
 #include "IntVector2D.h"
+#include <math.h>
 
 const IntVector2D IntVector2D::UNIT_X(1, 0);
 const IntVector2D IntVector2D::UNIT_Y(0, 1);
@@ -48,4 +49,19 @@ IntVector2D& IntVector2D::operator-=(const IntVector2D& other) {
 
 IntVector2D IntVector2D::operator*(int other) const {
 	return IntVector2D(_x * other, _y * other);
+}
+
+bool IntVector2D::operator==(const IntVector2D& other) const
+{
+	return _x == other._x && _y == other._y;
+}
+
+bool IntVector2D::operator!=(const IntVector2D& other) const
+{
+	return !(*this == other);
+}
+
+int IntVector2D::getLength() const
+{
+	return (int)sqrt(_x * _x + _y * _y);
 }

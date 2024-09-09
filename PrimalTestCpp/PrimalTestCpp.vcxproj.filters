@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\AI">
+      <UniqueIdentifier>{ffb19899-4c35-4cac-aa14-3f323b111aa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AI">
+      <UniqueIdentifier>{0ca56838-7356-4e61-9640-61251007fcac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AI\States">
+      <UniqueIdentifier>{77192cbd-46e7-45c0-9af9-d2033b586b64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AI\States">
+      <UniqueIdentifier>{ca4b11e9-8af9-43b8-bfca-d3f08425d854}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -50,6 +62,15 @@
     </ClCompile>
     <ClCompile Include="Exit.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIStateMachine.cpp">
+      <Filter>Source Files\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="StateBase.cpp">
+      <Filter>Source Files\AI\States</Filter>
+    </ClCompile>
+    <ClCompile Include="LookingForTreasureState.cpp">
+      <Filter>Source Files\AI\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +124,21 @@
     </ClInclude>
     <ClInclude Include="ILeaveHandler.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IState.h">
+      <Filter>Header Files\AI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="AIStateMachine.h">
+      <Filter>Header Files\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="StateBase.h">
+      <Filter>Header Files\AI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="LookingForTreasureState.h">
+      <Filter>Header Files\AI\States</Filter>
+    </ClInclude>
+    <ClInclude Include="DistanceData.h">
+      <Filter>Header Files\AI\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

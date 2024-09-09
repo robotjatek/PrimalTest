@@ -11,6 +11,7 @@
 #include "Exit.h"
 #include "IntVector2D.h"
 #include "ConsoleTools.h"
+#include "AIStateMachine.h"
 
 Level::Level(const std::string& levelData) {
 	std::vector<std::vector<char>> grid;
@@ -25,6 +26,7 @@ Level::Level(const std::string& levelData) {
 	int rows = (int)grid.size();
 	int columns = (int)grid[0].size();
 	_y = rows;
+	_x = columns;
 
 	for (int row = 0; row < grid.size(); row++) {
 		std::vector<bool> collisionRow;
@@ -61,6 +63,7 @@ Level::Level(const std::string& levelData) {
 			}
 		}
 
+		_ai = std::make_shared<AIStateMachine>(AIStateMachine(*this, *_hero, _gameObjects));
 		_collisionData.push_back(collisionRow);
 	}
 }
@@ -122,30 +125,36 @@ bool Level::isCollidingWith(const IntVector2D& point) const {
 
 void Level::update() {
 	_hero->update();
+	if (_aiState == AIState::ACTIVE) {
+		_ai->update();
+		Sleep(100);
+	}
 
-	if (_gameState == GameState::RUNNING) {
-		int key = ConsoleTools::getKey();
-		switch (key) {
-		case 75: // Left arrow key
-			_hero->move(IntVector2D::UNIT_X * -1);
-			break;
-		case 77: // Right arrow key
-			_hero->move(IntVector2D::UNIT_X);
-			break;
-		case 72: // Up arrow key
-			_hero->move(IntVector2D::UNIT_Y * -1);
-			break;
-		case 80: // Down arrow key
-			_hero->move(IntVector2D::UNIT_Y);
-			break;
-		case 27: // Escape key
-			_gameState = GameState::FORFEIT;
-			break;
-		case 13: // Enter key
-			//	aiState = AIState::ACTIVE;
-			break;
-		default:
-			break;
+	if (_aiState == AIState::INACTIVE) {
+		if (_gameState == GameState::RUNNING) {
+			int key = ConsoleTools::getKey();
+			switch (key) {
+			case 75: // Left arrow key
+				_hero->move(IntVector2D::UNIT_X * -1);
+				break;
+			case 77: // Right arrow key
+				_hero->move(IntVector2D::UNIT_X);
+				break;
+			case 72: // Up arrow key
+				_hero->move(IntVector2D::UNIT_Y * -1);
+				break;
+			case 80: // Down arrow key
+				_hero->move(IntVector2D::UNIT_Y);
+				break;
+			case 27: // Escape key
+				_gameState = GameState::FORFEIT;
+				break;
+			case 13: // Enter key
+				_aiState = AIState::ACTIVE;
+				break;
+			default:
+				break;
+			}
 		}
 	}
 }
@@ -169,4 +178,14 @@ void Level::onLeave(const Hero& hero) {
 
 int Level::getY() const {
 	return _y;
+}
+
+int Level::getX() const
+{
+	return _x;
+}
+
+std::vector<std::vector<bool>> Level::getCollisionData() const
+{
+	return _collisionData;
 }

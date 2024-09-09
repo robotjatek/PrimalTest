@@ -12,8 +12,14 @@
 #include "IGameObjectContainer.h"
 #include "ILeaveHandler.h"
 
+class AIStateMachine;
 class IGameObject;
 class Hero;
+
+enum AIState {
+	ACTIVE,
+	INACTIVE
+};
 
 enum GameState {
 	RUNNING,
@@ -28,8 +34,11 @@ private:
 	std::vector<std::vector<bool>> _collisionData;
 	std::list<std::shared_ptr<IGameObject>> _gameObjects;
 	EntityRenderer _entityRenderer;
+	std::shared_ptr<AIStateMachine> _ai;
 	std::shared_ptr<Hero> _hero;
 	GameState _gameState = GameState::RUNNING;
+	AIState _aiState = AIState::INACTIVE;
+	int _x;
 	int _y;
 public:
 	Level(const std::string& levelData);
@@ -43,5 +52,7 @@ public:
 	void onLeave(const Hero& hero) override;
 	GameState getGameState() const;
 	int getY() const;
+	int getX() const;
+	std::vector<std::vector<bool>> getCollisionData() const;
 };
 
