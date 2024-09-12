@@ -11,6 +11,8 @@ private:
 
 public:
 	Exit(ILeaveHandler& container, int x, int y);
+	Exit(const Exit&) = delete;
+	Exit& operator=(const Exit&) = delete;
 	char getSprite() const override;
 	const IntVector2D& getPosition() const override;
 	void draw(const EntityRenderer& entityRenderer) const override;

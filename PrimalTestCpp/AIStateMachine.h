@@ -41,6 +41,8 @@ public:
 	}
 
 	AIStateMachine(Level& level, Hero& hero, std::list<std::shared_ptr<IGameObject>>& gameObjects);
+	AIStateMachine(const AIStateMachine&) = delete;
+	AIStateMachine& operator=(const AIStateMachine&) = delete;
 	void changeState(std::shared_ptr<IState> state);
 	void update();
 };

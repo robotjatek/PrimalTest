@@ -20,7 +20,7 @@ public:
 	IntVector2D operator*(int i) const;
 	bool operator==(const IntVector2D& other) const;
 	bool operator!=(const IntVector2D& other) const;
-	int getLength() const;
+	unsigned int getLength() const;
 };
 
 namespace std {

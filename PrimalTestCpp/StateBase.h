@@ -15,6 +15,8 @@ class StateBase
 {
 public:
 	StateBase(Level& level);
+	StateBase(const StateBase&) = delete;
+	StateBase& operator=(StateBase&) = delete;
 protected:
 	Level& _level;
 	std::vector<IntVector2D> getPath(const IntVector2D& from, const IntVector2D& to,
@@ -25,12 +27,6 @@ protected:
 	template <typename T>
 	static std::vector<std::shared_ptr<IGameObject>> findAllObjectsOfType(const std::vector<std::shared_ptr<IGameObject>>& gameObjects) {
 		std::vector<std::shared_ptr<IGameObject>> result;
-
-		/*std::copy_if(gameObjects.begin(), gameObjects.end(),
-			std::back_inserter(result),
-			[](const std::shared_ptr<IGameObject>& obj) {
-				return std::dynamic_pointer_cast<T>(obj) != nullptr;
-			});*/
 
 		for (const auto& obj : gameObjects) {
 			if (auto casted = std::dynamic_pointer_cast<T>(obj)) {

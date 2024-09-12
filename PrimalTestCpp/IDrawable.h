@@ -9,6 +9,7 @@ public:
 	virtual char getSprite() const = 0;
 	virtual const IntVector2D& getPosition() const = 0;
 	virtual void draw(const EntityRenderer& entityRenderer) const = 0;
+	virtual ~IDrawable() = default;
 };
 
 class IGameObject : public IDrawable {

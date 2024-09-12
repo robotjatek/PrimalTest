@@ -12,6 +12,8 @@ private:
 	IntVector2D _position;
 public:
 	Sword(IGameObjectContainer& level, int x, int y);
+	Sword(const Sword&) = delete;
+	Sword& operator=(const Sword&) = delete;
 	char getSprite() const override;
 	const IntVector2D& getPosition() const override;
 	void draw(const EntityRenderer& entityRenderer) const override;

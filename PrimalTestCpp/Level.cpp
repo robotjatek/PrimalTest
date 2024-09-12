@@ -23,15 +23,15 @@ Level::Level(const std::string& levelData) {
 		grid.push_back(row);
 	}
 
-	int rows = (int)grid.size();
-	int columns = (int)grid[0].size();
+	unsigned int rows = (unsigned int)grid.size();
+	unsigned int columns = (unsigned int)grid[0].size();
 	_y = rows;
 	_x = columns;
 
-	for (int row = 0; row < grid.size(); row++) {
+	for (unsigned int row = 0; row < grid.size(); row++) {
 		std::vector<bool> collisionRow;
 
-		for (int col = 0; col < grid[row].size(); col++) {
+		for (unsigned int col = 0; col < grid[row].size(); col++) {
 			collisionRow.push_back(false);
 
 			char cell = grid[row][col];
@@ -40,7 +40,7 @@ Level::Level(const std::string& levelData) {
 				collisionRow[col] = true;
 				break;
 			case 'c':
-				_gameObjects.push_back(std::make_shared<Trap>(Trap(*this, col, row)));
+				_gameObjects.push_back(std::make_shared<Trap>(*this, col, row));
 				break;
 			case 'i':
 				_gameObjects.push_back(std::make_shared<Potion>(*this, col, row));
@@ -52,7 +52,7 @@ Level::Level(const std::string& levelData) {
 				_gameObjects.push_back(std::make_shared<Monster>(*this, col, row));
 				break;
 			case 'h':
-				_hero = std::make_shared<Hero>(Hero(*this, _gameObjects, col, row, *this));
+				_hero = std::make_shared<Hero>(*this, _gameObjects, col, row, *this);
 				break;
 			case 'k':
 				_gameObjects.push_back(std::make_shared<Treasure>(*this, col, row));
@@ -70,8 +70,8 @@ Level::Level(const std::string& levelData) {
 
 void Level::draw() const {
 	ConsoleTools::clear();
-	for (int i = 0; i < _collisionData.size(); i++) {
-		for (int j = 0; j < _collisionData[i].size(); j++) {
+	for (unsigned int i = 0; i < _collisionData.size(); i++) {
+		for (unsigned int j = 0; j < _collisionData[i].size(); j++) {
 			_collisionData[i][j] ? std::cout << "x" : std::cout << " ";
 		}
 		std::cout << std::endl;
@@ -127,7 +127,7 @@ void Level::update() {
 	_hero->update();
 	if (_aiState == AIState::ACTIVE) {
 		_ai->update();
-		Sleep(100);
+		//Sleep(100);
 	}
 
 	if (_aiState == AIState::INACTIVE) {
@@ -180,11 +180,11 @@ void Level::onForfeit() {
 	_gameState = GameState::FORFEIT;
 }
 
-int Level::getY() const {
+unsigned int Level::getY() const {
 	return _y;
 }
 
-int Level::getX() const {
+unsigned int Level::getX() const {
 	return _x;
 }
 

@@ -12,6 +12,8 @@ private:
 	IntVector2D _position;
 public:
 	Treasure(IGameObjectContainer& container, int x, int y);
+	Treasure(const Treasure&) = delete;
+	Treasure& operator=(const Treasure&) = delete;
 	char getSprite() const override;
 	const IntVector2D& getPosition() const override;
 	void draw(const EntityRenderer& entityRenderer) const override;

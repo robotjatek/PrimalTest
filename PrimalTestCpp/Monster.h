@@ -10,6 +10,8 @@ private:
 	IntVector2D _position;
 public:
 	Monster(Level& level, int x, int y);
+	Monster(const Monster&) = delete;
+	Monster& operator=(const Monster&) = delete;
 	char getSprite() const override;
 	const IntVector2D& getPosition() const override;
 	void draw(const EntityRenderer& entityRenderer) const override;

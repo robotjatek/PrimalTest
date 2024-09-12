@@ -61,7 +61,7 @@ bool IntVector2D::operator!=(const IntVector2D& other) const
 	return !(*this == other);
 }
 
-int IntVector2D::getLength() const
+unsigned int IntVector2D::getLength() const
 {
-	return (int)sqrt(_x * _x + _y * _y);
+	return (unsigned int)sqrt(_x * _x + _y * _y);
 }

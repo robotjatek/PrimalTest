@@ -20,6 +20,8 @@ private:
 	int _health;
 public:
 	Hero(ICollider& collider, std::list<std::shared_ptr<IGameObject>>& gameObjects, int x, int y, IDeathHandler& deathHandler);
+	Hero(const Hero&) = delete;
+	Hero& operator=(const Hero&) = delete;
 	char getSprite() const override;
 	const IntVector2D& getPosition() const override;
 	void draw(const EntityRenderer& entityRenderer) const override;

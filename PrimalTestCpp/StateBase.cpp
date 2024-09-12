@@ -16,8 +16,8 @@ std::unordered_map<IntVector2D, DistanceData> StateBase::calculateDistanceData(c
 
 	std::vector<IntVector2D> visited;
 	std::vector<IntVector2D> unvisited;
-	for (int x = 0; x < _level.getX(); x++) {
-		for (int y = 0; y < _level.getY(); y++) {
+	for (unsigned int x = 0; x < _level.getX(); x++) {
+		for (unsigned int y = 0; y < _level.getY(); y++) {
 			if (_level.getCollisionData()[y][x] == false) {
 				IntVector2D pos(x, y);
 				bool isWall = std::any_of(additionalWalls.begin(), additionalWalls.end(),

@@ -12,6 +12,9 @@ private:
 public:
 	Trap(Level& level, int x, int y);
 
+	Trap(const Trap&) = delete;
+	Trap& operator=(const Trap&) = delete;
+
 	char getSprite() const override;
 
 	void interact(Hero& hero) override;

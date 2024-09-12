@@ -27,7 +27,7 @@ int main()
 	}
 	level->draw();
 
-	ConsoleTools::setCursorPosition(0, level->getY());
+	ConsoleTools::setCursorPosition(0, (int)level->getY());
 	switch (level->getGameState()) {
 	case GameState::DEAD:
 		std::cout << "Game Over" << std::endl;

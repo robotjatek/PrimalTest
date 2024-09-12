@@ -38,8 +38,8 @@ private:
 	std::shared_ptr<Hero> _hero;
 	GameState _gameState = GameState::RUNNING;
 	AIState _aiState = AIState::INACTIVE;
-	int _x;
-	int _y;
+	unsigned _x;
+	unsigned _y;
 public:
 	Level(const std::string& levelData);
 	void draw() const;
@@ -52,8 +52,8 @@ public:
 	void onLeave(const Hero& hero) override;
 	void onForfeit();
 	GameState getGameState() const;
-	int getY() const;
-	int getX() const;
+	unsigned int getY() const;
+	unsigned int getX() const;
 	std::vector<std::vector<bool>> getCollisionData() const;
 };
 
