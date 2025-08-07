@@ -16,12 +16,12 @@ class AIStateMachine;
 class IGameObject;
 class Hero;
 
-enum AIState {
+enum class AIState {
 	ACTIVE,
 	INACTIVE
 };
 
-enum GameState {
+enum class GameState {
 	RUNNING,
 	FORFEIT,
 	WIN,

@@ -63,9 +63,10 @@ Level::Level(const std::string& levelData) {
 			}
 		}
 
-		_ai = std::make_shared<AIStateMachine>(*this, *_hero, _gameObjects);
 		_collisionData.push_back(collisionRow);
 	}
+
+	_ai = std::make_shared<AIStateMachine>(*this, *_hero, _gameObjects);
 }
 
 void Level::draw() const {
